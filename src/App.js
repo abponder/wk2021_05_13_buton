@@ -12,6 +12,7 @@ import {
 import Button1 from './Button1';
 import Mdn from './About';
 import Team from './Team';
+import Contactform from './Contactform';
 
 class App extends React.Component {
   state = {
@@ -43,6 +44,9 @@ class App extends React.Component {
       <Nav.Link >
         <Link to="/about">About</Link>
       </Nav.Link>
+      <Nav.Link >
+        <Link to="/contact">Contact</Link>
+      </Nav.Link>
       </Nav>
   </Navbar>
 
@@ -55,8 +59,11 @@ class App extends React.Component {
           <Route path="/team">
             <Team />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Button1 handleClick={this.handleClick} flag={this.state.flag} />
+          </Route>
+          <Route path="/contact">
+            <Contactform />
           </Route>
         </Switch>
       </div>
