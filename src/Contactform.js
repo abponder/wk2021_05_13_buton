@@ -7,8 +7,22 @@ class Contactform extends React.Component {
     firstname:"",
     lastname:"",
     email:"",
-    showmessage:false
+    showmessage:false,
+    contacts:[]
   };
+
+  componentDidMount(){
+    const contacts = localStorage.getItem('contacts')
+    console.log(contacts)
+    if(!contacts){
+      localStorage.setItem('contacts', [])
+    }else{
+      this.setState({
+        contacts:JSON.parse(contacts)
+      })
+    }
+    
+  }
 
   onchange = (event) => {
     console.log({
@@ -21,9 +35,20 @@ class Contactform extends React.Component {
 
   onsubmit = (event) => {
     event.preventDefault()
+    const contact = {
+      firstname:this.state.firstname,
+      lastname:this.state.lastname,
+      email:this.state.email}
     this.setState({
-      showmessage:true
+      contacts:[
+        ...this.state.contacts,
+        contact
+      ]
     })
+    localStorage.setItem('contacts',JSON.stringify([
+      ...this.state.contacts,
+      contact
+    ]))
   }
 
   render() {
@@ -51,9 +76,13 @@ class Contactform extends React.Component {
         Submit
       </Button>
     </Form>
-      {this.state.showmessage && (
-          <p>Hi {this.state.firstname} {this.state.lastname}, we'll contact you at {this.state.email}</p>
-      )}
+      {this.state.contacts.length ? (
+          <>
+            {this.state.contacts.map(contact =>(
+              <p>{contact.firstname}, {contact.lastname}, {contact.email}</p>
+            ))}
+          </>
+      ):<></>}
     
       </Container>
 
