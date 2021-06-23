@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Form, Row, Col, Container, Button} from 'react-bootstrap'
+import {Form, Row, Col, Container, Button, ListGroup} from 'react-bootstrap'
 
 class Contactform extends React.Component {
   state = {
@@ -10,6 +10,7 @@ class Contactform extends React.Component {
     showmessage:false,
     contacts:[]
   };
+
 
   componentDidMount(){
     const contacts = localStorage.getItem('contacts')
@@ -22,6 +23,18 @@ class Contactform extends React.Component {
       })
     }
     
+  }
+
+  handleDelete = (e, contact) => {
+    console.log(e)
+    const contacts = JSON.parse(localStorage.getItem('contacts'));
+    const updatedcontacts = contacts.filter(ct => {
+      return ct.email!== contact.email
+    })
+    localStorage.setItem('contacts', JSON.stringify(updatedcontacts));
+    this.setState({
+      contacts:updatedcontacts
+    })
   }
 
   onchange = (event) => {
@@ -76,15 +89,30 @@ class Contactform extends React.Component {
         Submit
       </Button>
     </Form>
-      {this.state.contacts.length ? (
-          <>
-            {this.state.contacts.map(contact =>(
-              <p>{contact.firstname}, {contact.lastname}, {contact.email}</p>
-            ))}
-          </>
-      ):<></>}
-    
-      </Container>
+      <Row className="mt-5">
+        ...................................................
+      </Row>
+      <Row>
+        <Col>New Contacts</Col>
+      </Row>
+      <ListGroup>
+        {this.state.contacts.length ? (
+            <>
+              {this.state.contacts.map(contact =>(
+                <ListGroup.Item>
+                  {contact.firstname}, {contact.lastname}, {contact.email}
+                  <Button className="float-right" variant="danger" type="button" onClick={(e) => this.handleDelete(e, contact)}>delete</Button>
+                </ListGroup.Item>
+
+              ))}
+            </>
+        ):<></>}
+      </ListGroup>
+
+  </Container>
+  
+ 
+
 
     );
   }
