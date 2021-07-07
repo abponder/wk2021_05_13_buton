@@ -23,10 +23,15 @@ class Contactform extends React.Component {
       })
     }
     
-  }
+  }S
 
   handleDelete = (e, contact) => {
-    console.log(e)
+    
+    // console.log('handledelete1: ' + e.target)
+    console.log('handledelete2: ' + Object.entries(e))
+    // console.log('handledelete1.5: ' + (e.detail))
+    // console.log('handledelete2: ' + Object.keys(e))
+    console.log('handledelete3: ' + JSON.stringify(contact))
     const contacts = JSON.parse(localStorage.getItem('contacts'));
     const updatedcontacts = contacts.filter(ct => {
       return ct.email!== contact.email
@@ -101,7 +106,10 @@ class Contactform extends React.Component {
               {this.state.contacts.map(contact =>(
                 <ListGroup.Item>
                   {contact.firstname}, {contact.lastname}, {contact.email}
-                  <Button className="float-right" variant="danger" type="button" onClick={(e) => this.handleDelete(e, contact)}>delete</Button>
+                  <Button className="float-right" variant="danger" type="button" 
+                          onClick={(e) => this.handleDelete(e,contact)}>
+                    delete
+                  </Button>
                 </ListGroup.Item>
 
               ))}
