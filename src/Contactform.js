@@ -23,7 +23,7 @@ class Contactform extends React.Component {
       })
     }
     
-  }S
+  }
 
   handleDelete = (e, contact) => {
     

@@ -13,6 +13,7 @@ import Button1 from './Button1';
 import Mdn from './About';
 import Team from './Team';
 import Contactform from './Contactform';
+import Cars from './Cars';
 
 class App extends React.Component {
   state = {
@@ -35,18 +36,21 @@ class App extends React.Component {
       <Navbar bg="dark" variant="dark">
     <Navbar.Brand href="#home">Navbar</Navbar.Brand>
     <Nav className="mr-auto">
-      <Nav.Link >
-        <Link to="/">Home</Link>
-      </Nav.Link>
-      <Nav.Link >
-        <Link to="/team">Team</Link>
-      </Nav.Link>
-      <Nav.Link >
-        <Link to="/about">About</Link>
-      </Nav.Link>
-      <Nav.Link >
-        <Link to="/contact">Contact</Link>
-      </Nav.Link>
+        <Nav.Link >
+          <Link to="/">Home</Link>
+        </Nav.Link>
+        <Nav.Link >
+          <Link to="/team">Team</Link>
+        </Nav.Link>
+        <Nav.Link >
+          <Link to="/about">About</Link>
+        </Nav.Link>
+        <Nav.Link >
+          <Link to="/contact">Contact</Link>
+        </Nav.Link>
+        <Nav.Link >
+          <Link to="/cars">Cars</Link>
+        </Nav.Link>
       </Nav>
   </Navbar>
 
@@ -64,6 +68,9 @@ class App extends React.Component {
           </Route>
           <Route path="/contact">
             <Contactform />
+          </Route>
+          <Route path="/cars">
+            <Cars />
           </Route>
         </Switch>
       </div>
