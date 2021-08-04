@@ -14,6 +14,7 @@ import Mdn from './About';
 import Team from './Team';
 import Contactform from './Contactform';
 import Cars from './Cars';
+import Chart from './Chart';
 
 class App extends React.Component {
   state = {
@@ -51,6 +52,9 @@ class App extends React.Component {
         <Nav.Link >
           <Link to="/cars">Cars</Link>
         </Nav.Link>
+        <Nav.Link >
+          <Link to="/chart">Chart</Link>
+        </Nav.Link>
       </Nav>
   </Navbar>
 
@@ -71,6 +75,9 @@ class App extends React.Component {
           </Route>
           <Route path="/cars">
             <Cars />
+          </Route>
+          <Route path="/chart">
+            <Chart />
           </Route>
         </Switch>
       </div>

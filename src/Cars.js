@@ -1,7 +1,8 @@
 import React from 'react';
 import {ListGroup, Container, Table} from 'react-bootstrap'
+import CustomTable from './CustomTable'
 
-
+const tableheadings = []
 class Cars extends React.Component {
   state = {
     carslist: [{
@@ -77,11 +78,21 @@ class Cars extends React.Component {
     }]
   };
 
-
   render(){
     return (
     <>
     <Container style={{ marginTop: '2.0rem' }} >
+      <CustomTable 
+        tableheadings= {["First Name", "Last Name", "Email", "Model", "Color"]}
+        tablerows= {this.state.carslist.map(car=>(
+          {first_name: car.first_name,
+           last_name: car.last_name,
+           email: car.email,
+           car_model: car.car_model,
+           car_color: car.car_color
+          }
+        ))}
+      />
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
