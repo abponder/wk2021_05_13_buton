@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Navbar, Nav} from 'react-bootstrap'
+import {Navbar, Nav, Container} from 'react-bootstrap'
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,7 +14,10 @@ import Mdn from './About';
 import Team from './Team';
 import Contactform from './Contactform';
 import Cars from './Cars';
+import CarsHooks from './CarsHooks';
 import Chart from './Chart';
+import CountState from './CountState';
+import CountHook from './CountHook';
 
 class App extends React.Component {
   state = {
@@ -34,28 +37,38 @@ class App extends React.Component {
       
   <Router>
       <div>
-      <Navbar bg="dark" variant="dark">
-    <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-    <Nav className="mr-auto">
+    <Navbar className="color-nav" variant="dark" sticky="top" >
+    <Navbar.Brand href="/">Navbar</Navbar.Brand>
+    <Nav className="mr-auto color-nav2">
         <Nav.Link >
           <Link to="/">Home</Link>
         </Nav.Link>
         <Nav.Link >
-          <Link to="/team">Team</Link>
+          <Link className="color-nav2" to="/team">Team</Link>
         </Nav.Link>
         <Nav.Link >
-          <Link to="/about">About</Link>
+          <Link className="color-nav2" to="/about">About</Link>
         </Nav.Link>
         <Nav.Link >
-          <Link to="/contact">Contact</Link>
+          <Link className="color-nav2" to="/contact">Contact</Link>
         </Nav.Link>
         <Nav.Link >
-          <Link to="/cars">Cars</Link>
+          <Link className="color-nav2" to="/cars">Cars</Link>
         </Nav.Link>
         <Nav.Link >
-          <Link to="/chart">Chart</Link>
+          <Link className="color-nav2" to="/carsHooks">Cars Hooks</Link>
         </Nav.Link>
-      </Nav>
+        <Nav.Link >
+          <Link className="color-nav2" to="/chart">Chart</Link>
+        </Nav.Link>
+        <Nav.Link >
+          <Link className="color-nav2" to="/counter-class">counter class</Link>
+        </Nav.Link>
+        <Nav.Link >
+          <Link className="color-nav2" to="/counter-functional">Counter Function Hooks</Link>
+        </Nav.Link>
+  
+    </Nav>
   </Navbar>
 
         {/* A <Switch> looks through its children <Route>s and
@@ -76,8 +89,17 @@ class App extends React.Component {
           <Route path="/cars">
             <Cars />
           </Route>
+          <Route path="/carsHooks">
+            <CarsHooks />
+          </Route>
           <Route path="/chart">
             <Chart />
+          </Route>
+          <Route path="/counter-class">
+            <CountState />
+          </Route>
+          <Route path="/counter-functional">
+            <CountHook />
           </Route>
         </Switch>
       </div>
